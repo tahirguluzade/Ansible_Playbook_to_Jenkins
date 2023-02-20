@@ -51,6 +51,7 @@ sudo firewall-cmd --reload
 ```
 
 - Now, you can go to your browser and type `http://<ip address of your machine>:8080` , then you will see following screen below:
+
 All you need to do is go to your machine terminal and run `cat <path-to-initial-password>` , then copy resulted password and paste it to the `Administrator password` part.
 
 <img src="https://user-images.githubusercontent.com/117680100/220190303-4c276897-bd90-4ac0-a7e2-81a06e6252cc.png" width="60%" height="60%">
