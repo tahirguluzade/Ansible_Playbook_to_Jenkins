@@ -54,7 +54,7 @@ sudo firewall-cmd --reload
 
 ![unlock-jenkins](https://user-images.githubusercontent.com/117680100/220190303-4c276897-bd90-4ac0-a7e2-81a06e6252cc.png)
 
-<img src="https://user-images.githubusercontent.com/117680100/220190303-4c276897-bd90-4ac0-a7e2-81a06e6252cc.png" width="50%" height="50%">
+<img src="https://user-images.githubusercontent.com/117680100/220190303-4c276897-bd90-4ac0-a7e2-81a06e6252cc.png" width="75%" height="75%">
 
 All you need to do is go to your machine terminal and run `cat <path-to-initial-password>` , then copy resulted password and paste it to the `Administrator password` part.
 
