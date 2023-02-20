@@ -59,14 +59,16 @@ All you need to do is go to your machine terminal and run `cat <path-to-initial-
 - After typing password you will see below screen
 
 <img src="https://user-images.githubusercontent.com/117680100/220194500-511e0f0d-a56b-478d-ab20-aa95ef565d6e.png" width="60%" height="60%">
+
 Click metioned section `Install suggested plugins` or you can also install specific plugins as you want.
 
 - When installation was completed, below screen will be seem.
 
 <img src="https://user-images.githubusercontent.com/117680100/220195942-c566f68f-0f4a-41cb-b9a7-53ea8ec39ece.png" width="60%" height="60%">
+
 You have two options here. You can skip creating user (you can create it later) and continue as a admin or write down details of user and continue.
 
-- In following window, `save and continue` for Jenkins url where you will able to access your Jenkins environment
+- In following window, `save and continue` for Jenkins url where you will able to access your Jenkins environment.
 
 <img src="https://user-images.githubusercontent.com/117680100/220196490-011912ae-779f-4679-9455-556c83d2b65e.png" width="60%" height="60%">
 
