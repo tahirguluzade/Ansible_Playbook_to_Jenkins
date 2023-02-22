@@ -206,5 +206,5 @@ All you need to do is go to your machine terminal and run `cat <path-to-initial-
 
  <img src="https://user-images.githubusercontent.com/117680100/220718930-349df105-aa43-45c6-9f76-d9eb33d8f83c.png" width="80%" height="80%">
 
- ### Congrats, You have built your first Jenkins projcet. KEEP GOING!!! 
+ ### Congrats, You have built your first Jenkins project. KEEP GOING!!! 
 
