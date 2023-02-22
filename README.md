@@ -1,8 +1,10 @@
 # Ansible_Playbook_to_Jenkins
 
 - **In this tutorial, we are gonna learn how to run ansible playbook through Jenkins CI/CD pipeline.**
+![How-to-Run-Ansible-Playbook-from-Jenkins-DevOpsBuzz](https://user-images.githubusercontent.com/117680100/220602663-21b46cb0-7131-479f-8491-8647bf6becfd.png)
 
-**1.** First of all, we need to install Jenkins in our machine where we will run Jenkins.However before installation it is better to add new user and install jenkins and run with that command.
+
+**1.** Before installation it is better to add new user and install jenkins, ansible and run commands with that user.
 
 - Creating new user
 
@@ -18,6 +20,12 @@ vim /etc/sudoers/
 # type following line under "root   ALL=(ALL)      ALL"
 jenkins   ALL=(ALL)      NOPASSWD:  ALL
 ```
+
+**2.** Installing ansible in our machine where we will also install Jenkins.
+ 
+
+
+**1.** First of all, we need to install Jenkins in our machine where we will run Jenkins.However before installation it is better to add new user and install jenkins and run with that command.
 
 - To install jenkins run below commands in your machine.
 
