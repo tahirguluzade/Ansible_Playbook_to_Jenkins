@@ -3,6 +3,12 @@
 - **In this tutorial, we are gonna learn how to run ansible playbook through Jenkins CI/CD pipeline.**
 <img src="https://user-images.githubusercontent.com/117680100/220602663-21b46cb0-7131-479f-8491-8647bf6becfd.png" width="60%" height="60%">
 
+### What is Jenkins?
+Jenkins is an open source continuous automation software DevOps tool written in the Java programming language. It helps automate the parts of software development related to building, testing, and deploying, facilitating continuous integration (CI) and continuous delivery (CD). It is a server-based system that runs in servlet containers such as Apache Tomcat.
+
+### What is Ansible?
+Ansible is an open source, command-line IT automation software application written in Python and developed by **Red Hat**. It can configure systems, deploy software, and orchestrate advanced workflows to support application deployment, system updates, and more. 
+Let's say we have hundreds of servers, and we want add some files to those servers. Istead of log in every server and running some commands, we just create simple Ansible playbook where it goes to servers and add files at the same time which is more efficient in terms of time consuming.
 
 **1.** Before installation it is better to add new user and install jenkins, ansible and run commands with that user.
 
