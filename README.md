@@ -12,7 +12,7 @@ Let's say we have hundreds of servers, and we want add some files to those serve
 
 
 ### Creating new user
-**1.** Before installation it is better to add new user and install jenkins, ansible and run commands with that user.
+**STEP 1.** Before installation it is better to add new user and install jenkins, ansible and run commands with that user.
 
 ```
 useradd jenkins
@@ -28,7 +28,8 @@ jenkins   ALL=(ALL)      NOPASSWD:  ALL
 ```
 
 ### Installing ansible in our machine where we will also install Jenkins.
-- Make sure that phyton is installed in your machine.
+
+- **STEP 2** Make sure that phyton is installed in your machine.
 ```
 python3 -m pip -V
 ```
@@ -50,7 +51,7 @@ python3 -m pip show ansible
 
 ### Instaliing Jenkins in our machine where we also istalled Ansible before.
 
-- To install jenkins run below commands in your machine.
+- **STEP 3** To install jenkins run below commands in your machine.
 
 ```
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
@@ -81,7 +82,9 @@ sudo firewall-cmd --zone=public --add-port=8080/tcp
 sudo firewall-cmd --reload
 ```
 
-- Now, you can go to your browser and type `http://<ip address of your machine>:8080` , then you will see following screen below:
+### Configuring Jenkins
+
+- **STEP 4** Now, you can go to your browser and type `http://<ip address of your machine>:8080` , then you will see following screen below:
 
 All you need to do is go to your machine terminal and run `cat <path-to-initial-password>` , then copy resulted password and paste it to the `Administrator password` part.
 
@@ -106,7 +109,7 @@ All you need to do is go to your machine terminal and run `cat <path-to-initial-
 
 ### Adding Ansible plugins to Jenkins
 
-- On the left side of screen click the `Manage Jenkins`.
+- **STEP 5** On the left side of screen click the `Manage Jenkins`.
 
 <img src="https://user-images.githubusercontent.com/117680100/220679175-7473cef1-6033-4236-9b2b-7811e1a28c71.png" width="60%" height="60%">
 
@@ -130,56 +133,52 @@ All you need to do is go to your machine terminal and run `cat <path-to-initial-
 
 #### pipeline script for git
 
-- In the main menu , click `New Item` and in the opened window type the name as you want to call it then click `Pipeline` and click `OK` .
+- **STEP 6** In the main menu , click `New Item` and in the opened window type the name as you want to call it then click `Pipeline` and click `OK` .
 
-<img src="https://user-images.githubusercontent.com/117680100/220692504-a7d4816b-fb14-4f6e-bfb2-bd4f814b3c93.png" width="60%" height="60%">
+<img src="https://user-images.githubusercontent.com/117680100/220692504-a7d4816b-fb14-4f6e-bfb2-bd4f814b3c93.png" width="70%" height="70%">
 
 - Scroll down and in the pipeline section click `pipeline syntax` where it will helps us to generate pipeline for github repository and ansible.
 
-<img src="https://user-images.githubusercontent.com/117680100/220695964-5731373c-01b3-4ce2-b773-1e8575882b6b.png" width="60%" height="60%">
+<img src="https://user-images.githubusercontent.com/117680100/220695964-5731373c-01b3-4ce2-b773-1e8575882b6b.png" width="70%" height="70%">
 
-- As shown in the below picture: 
+- **STEP 7** As shown in the below picture: 
     - choose `git:Git` from `Sample Step`
     - Paste url of ansible playbook if you have already one. If you do not have any ansible playbook you can use my 
     `Prometheus-Node-Exporter_Ansible-Playbook` repository for sample.
     - Branch name of your repository
     - Click to `Generate Pipeline Script` (copy it and save it we will use it after few steps in main pipeline)
 
-    <img src="https://user-images.githubusercontent.com/117680100/220698528-8af58515-6442-41a1-aeec-dbc2e70d0854.png" width="70%" height="70%">
+    <img src="https://user-images.githubusercontent.com/117680100/220698528-8af58515-6442-41a1-aeec-dbc2e70d0854.png" width="75%" height="75%">
 
     <img src="https://user-images.githubusercontent.com/117680100/220704308-03063e20-e3d2-431f-aab5-dfdc7f6bc1e0.png" width="70%" height="70%">
 **SPECIAL NOTE:** If you see following error while pasting your github repository url, it means `GIT` is not installed in your machine. Therefore, go to your Linux machine and install git with `sudo yum isntall git -y` command.
 
-  <img src="https://user-images.githubusercontent.com/117680100/220699381-4ed352a1-4b0f-454b-a7d8-0337512adf08.png" width="70%" height="70%">
+  <img src="https://user-images.githubusercontent.com/117680100/220699381-4ed352a1-4b0f-454b-a7d8-0337512adf08.png" width="75%" height="75%">
   
 
 #### pipeline script for Ansible
 
-- Now, we need to generate pipeline for Ansible as well. 
+- **STEP 8** Now, we need to generate pipeline for Ansible as well. 
     - Choose `asniblePlaybook: invoke an Ansible Playbook` from `Sample Step`.
     - For `Playbook file path in workspace` , write down name of your .yml file in the repository.
     - Type your inventory file path in repository to `Inventory file path in workspace.`
+    <img src="https://user-images.githubusercontent.com/117680100/220705116-26d320d7-05dc-4f55-b47e-8d17837d63c3.png" width="75%" height="75%">
     - For `SSH connection credentials`: click to `+ Add` and `Jenkins` then enter details for SSH connection.
 
-    <img src="https://user-images.githubusercontent.com/117680100/220709292-bc4b8754-60da-4f34-b9a8-aa784710ee86.png" width="70%" height="70%">
+    <img src="https://user-images.githubusercontent.com/117680100/220709292-bc4b8754-60da-4f34-b9a8-aa784710ee86.png" width="75%" height="75%">
     
-    for the private key go to your Linux machine and copy private key and directly paste it to `Add` section
+    - for the private key go to your Linux machine and copy private key and directly paste it to `Add` section
 
-    <img src="https://user-images.githubusercontent.com/117680100/220709316-65135883-afdf-400a-b8e8-7b2fb832594d.png" width="70%" height="70%">
+    <img src="https://user-images.githubusercontent.com/117680100/220709316-65135883-afdf-400a-b8e8-7b2fb832594d.png" width="75%" height="75%">
     After adding your private key then for `SSH connection credentials`, choose your private key which you added.
 
     - For `Become username` and `Sudo username` use  an username which we created while installing Jenkins and Ansible.
     - Click to `Generate Pipeline Script` and copy script (we will need at at main pipeline).
+     <img src="https://user-images.githubusercontent.com/117680100/220712581-646684ee-ef25-4849-bbd1-e57312d495f3.png" width="75%" height="75%">
 
-    <img src="https://user-images.githubusercontent.com/117680100/220705116-26d320d7-05dc-4f55-b47e-8d17837d63c3.png" width="70%" height="70%">
- 
+### Creating Pipeline for building
 
-
-
-
-
-
-
+- **STEP 9** Now, go back to the pipeline where we created new pipeline item in **Step 6** , and type below script to there also ypu need to paste your git and Ansible pipeline scripts thath we generated before in **Step 7** and **Step 8** to there. Then click save.
 
 ```
   pipeline{
@@ -187,9 +186,24 @@ All you need to do is go to your machine terminal and run `cat <path-to-initial-
     stages{
         stage{'SCM Checkout'){
             steps{
-                
+                <your github pipeline script>   
             }
+        }
+        stage('Execute Ansible'){
+            steps{
+                <your ansible pipeline script>
+            }    
         }
     }
     
 }
+```
+
+ <img src="https://user-images.githubusercontent.com/117680100/220714798-d530e1a4-9a74-49e4-a2cb-d15140e32604.png" width="75%" height="75%">
+
+- **STEP 10** Now, go to the your pipeline and click `Build Now`, then it will start to build our pipeline. You check status of your pipeline building process as well as looking at logs on the right side. If everything is succesfully completed, then you can check your remote target server for your ansible playbook.
+
+ <img src="https://user-images.githubusercontent.com/117680100/220718930-349df105-aa43-45c6-9f76-d9eb33d8f83c.png" width="75%" height="75%">
+
+ ### Congrats, You have built your first Jenkins projcet. KEEP GOING!!! 
+ 
