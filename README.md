@@ -1,6 +1,6 @@
 # Ansible_Playbook_to_Jenkins
 
-### In this tutorial, we are gonna learn how to run ansible playbook through Jenkins CI/CD pipeline.
+### In this tutorial, we are gonna learn how to run ansible playbook through Jenkins CI/CD pipeline. (Simple DevOps project for beginners).
 <img src="https://user-images.githubusercontent.com/117680100/220602663-21b46cb0-7131-479f-8491-8647bf6becfd.png" width="60%" height="60%">
 
 ### What is Jenkins?
@@ -38,7 +38,7 @@ python3 -m pip -V
 ```
 python3 -m pip install --user ansible
 ```
-- confirm that ansible is installed succesfully. by this command you check asible-core package that has been installed.
+- Confirm that ansible is installed succesfully. by this command you check asible-core package that has been installed.
 ```
 ansible --version
 ```
@@ -104,8 +104,61 @@ All you need to do is go to your machine terminal and run `cat <path-to-initial-
 <img src="https://user-images.githubusercontent.com/117680100/220196824-06ed912d-948e-42b4-a47e-eda84e7ec622.png" width="60%" height="60%">
 
 
+### Adding Ansible plugins to Jenkins
 
+- On the left side of screen click the `Manage Jenkins`
 
+<img src="https://user-images.githubusercontent.com/117680100/220679175-7473cef1-6033-4236-9b2b-7811e1a28c71.png" width="60%" height="60%">
 
+- In the opening window go to the next section which is `Manage Pugins`.
 
+<img src="https://user-images.githubusercontent.com/117680100/220679175-7473cef1-6033-4236-9b2b-7811e1a28c71.png" width="60%" height="60%">
 
+- After going to the Manage Plugins section, on the lefts side of the screen click on `avaliable pulgins` and just type ansible then install it.
+
+<img src="https://user-images.githubusercontent.com/117680100/220685920-6d8a1278-04cd-431d-85ec-b14cc4b8586b.png" width="60%" height="60%">
+
+- When installation was completed, go to the `global tool configuration` from `manage jenkins` section, then scroll down and add ansible. In name part you can any name as you want , but for the `path to ansible executables directory` go to your machine where ansible was installed type `which ansible` command and copy it paste path to that section.
+
+<img src="https://user-images.githubusercontent.com/117680100/220689448-c5000a94-7dbc-41d9-97f4-1327d50afa5d.png" width="60%" height="60%">
+
+<img src="https://user-images.githubusercontent.com/117680100/220690413-f6de4e0d-e333-48e4-8671-cb8c20af1b8b.png" width="60%" height="60%">
+
+**NOTE:** if you installed ansible with different user, your path to ansible command would not be the same. it will be something like `/home/username/.local/bin/ansible`.
+
+### Creating Pipeline
+
+- In the main menu , click `New Item` and in the opened window type the name as you want to call it then click `Pipeline` and click `OK` .
+
+<img src="https://user-images.githubusercontent.com/117680100/220692504-a7d4816b-fb14-4f6e-bfb2-bd4f814b3c93.png" width="60%" height="60%">
+
+- Scroll down and in the pipeline section click `pipeline syntax` where it will helps us to generate pipeline for github repository and ansible.
+
+<img src="https://user-images.githubusercontent.com/117680100/220695964-5731373c-01b3-4ce2-b773-1e8575882b6b.png" width="60%" height="60%">
+
+- As shown in the below picture: 
+    1. choose `git:Git` from `Sample Step`
+    2. Paste url of ansible playbook if you have already one. If you do not have any ansible playbook you can use my 
+    `Prometheus-Node-Exporter_Ansible-Playbook` repository for sample.
+    3. Branch name of your repository
+    4. Click to `Generate Pipeline`
+
+    <img src="https://user-images.githubusercontent.com/117680100/220698528-8af58515-6442-41a1-aeec-dbc2e70d0854.png" width="60%" height="60%">
+
+**SPECIAL NOTE:** If you see following error while pasting your github repository url, it means `GIT` is not installed in your machine. Therefore, go to your Linux machine and install git with `sudo yum isntall git -y` command.
+
+  <img src="https://user-images.githubusercontent.com/117680100/220699381-4ed352a1-4b0f-454b-a7d8-0337512adf08.png" width="60%" height="60%">
+  
+- After Generating pipeline for git, copy it and paste to pipe line section as shown below:
+```
+  pipeline{
+    agnet any
+    stages{
+        stage{'SCM Checkout'){
+            steps{
+                
+            }
+        }
+    }
+    
+}
