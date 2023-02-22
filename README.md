@@ -1,6 +1,6 @@
 # Ansible_Playbook_to_Jenkins
 
-- **In this tutorial, we are gonna learn how to run ansible playbook through Jenkins CI/CD pipeline.**
+### In this tutorial, we are gonna learn how to run ansible playbook through Jenkins CI/CD pipeline.
 <img src="https://user-images.githubusercontent.com/117680100/220602663-21b46cb0-7131-479f-8491-8647bf6becfd.png" width="60%" height="60%">
 
 ### What is Jenkins?
@@ -10,9 +10,9 @@ Jenkins is an open source continuous automation software DevOps tool written in 
 Ansible is an open source, command-line IT automation software application written in Python and developed by **Red Hat**. It can configure systems, deploy software, and orchestrate advanced workflows to support application deployment, system updates, and more. 
 Let's say we have hundreds of servers, and we want add some files to those servers. Istead of log in every server and running some commands, we just create simple Ansible playbook where it goes to servers and add files at the same time which is more efficient in terms of time consuming.
 
-**1.** Before installation it is better to add new user and install jenkins, ansible and run commands with that user.
 
-- Creating new user
+### Creating new user
+**1.** Before installation it is better to add new user and install jenkins, ansible and run commands with that user.
 
 ```
 useradd jenkins
@@ -27,18 +27,35 @@ vim /etc/sudoers/
 jenkins   ALL=(ALL)      NOPASSWD:  ALL
 ```
 
-**2.** Installing ansible in our machine where we will also install Jenkins.
- 
+### Installing ansible in our machine where we will also install Jenkins.
+- Make sure that phyton is installed in your machine.
+```
+python3 -m pip -V
+```
+- If all is well, you should see something like the following: `pip 23.0.1 from /home/jenkins/.local/lib/python3.9/site-packages/pip (python 3.9)`.
+
+- Use pip to install ansible package.
+```
+python3 -m pip install --user ansible
+```
+- confirm that ansible is installed succesfully. by this command you check asible-core package that has been installed.
+```
+ansible --version
+```
+- To check the version of the ansible package that has been installed:
+```
+python3 -m pip show ansible
+```
 
 
-**1.** First of all, we need to install Jenkins in our machine where we will run Jenkins.However before installation it is better to add new user and install jenkins and run with that command.
+### Instaliing Jenkins in our machine where we also istalled Ansible before.
 
 - To install jenkins run below commands in your machine.
 
 ```
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
-#If wget command is not installed in your machine, try to install it wit 'yum install wget -y'
+#If wget command is not installed in your machine, try to install it wit 'sudo yum install wget -y'
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 sudo yum upgrade -y
 # Add required dependencies for the jenkins package
