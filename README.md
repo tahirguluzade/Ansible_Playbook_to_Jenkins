@@ -1,4 +1,4 @@
-# Ansible_Playbook_to_Jenkins
+# Ansible_Playbook_through_Jenkins
 
 ### In this tutorial, we are gonna learn how to run ansible playbook through Jenkins CI/CD pipeline. (Simple DevOps project for beginners).
 <img src="https://user-images.githubusercontent.com/117680100/220602663-21b46cb0-7131-479f-8491-8647bf6becfd.png" width="60%" height="60%">
@@ -12,7 +12,7 @@ Let's say we have hundreds of servers, and we want add some files to those serve
 
 
 ### Creating new user
-**STEP 1.** Before installation it is better to add new user and install jenkins, ansible and run commands with that user.
+**STEP 1.** Before installation it is better to add new user and install Jenkins, Ansible and run commands with that user.
 
 ```
 useradd jenkins
@@ -81,6 +81,7 @@ sudo firewall-cmd --zone=public --add-port=8080/tcp
 # do not forget to reload
 sudo firewall-cmd --reload
 ```
+- **NOTE :** If you have application which is already running on port number `8080` then you need to forward Jenkins to work another port number. 
 
 ### Configuring Jenkins
 
@@ -94,7 +95,7 @@ All you need to do is go to your machine terminal and run `cat <path-to-initial-
 
 <img src="https://user-images.githubusercontent.com/117680100/220194500-511e0f0d-a56b-478d-ab20-aa95ef565d6e.png" width="60%" height="60%">
 
-- When installation was completed, below screen will be seem. You have two options here. You can skip creating user (you can create it later) and continue as a admin or write down details of user and continue.
+- When installation was completed, below screen will seem. You have two options here. You can skip creating user (you can create it later) and continue as a admin or write down details of user and continue.
 
 <img src="https://user-images.githubusercontent.com/117680100/220195942-c566f68f-0f4a-41cb-b9a7-53ea8ec39ece.png" width="60%" height="60%">
 
@@ -131,7 +132,7 @@ All you need to do is go to your machine terminal and run `cat <path-to-initial-
 
 ### Creating Pipeline Scripts for Ansible and Git.
 
-#### pipeline script for git
+#### Pipeline script for git
 
 - **STEP 6** In the main menu , click `New Item` and in the opened window type the name as you want to call it then click `Pipeline` and click `OK` .
 
@@ -153,10 +154,10 @@ All you need to do is go to your machine terminal and run `cat <path-to-initial-
     <img src="https://user-images.githubusercontent.com/117680100/220704308-03063e20-e3d2-431f-aab5-dfdc7f6bc1e0.png" width="70%" height="70%">
 **SPECIAL NOTE:** If you see following error while pasting your github repository url, it means `GIT` is not installed in your machine. Therefore, go to your Linux machine and install git with `sudo yum isntall git -y` command.
 
-  <img src="https://user-images.githubusercontent.com/117680100/220699381-4ed352a1-4b0f-454b-a7d8-0337512adf08.png" width="75%" height="75%">
+  <img src="https://user-images.githubusercontent.com/117680100/220699381-4ed352a1-4b0f-454b-a7d8-0337512adf08.png" width="80%" height="80%">
   
 
-#### pipeline script for Ansible
+#### Pipeline script for Ansible
 
 - **STEP 8** Now, we need to generate pipeline for Ansible as well. 
     - Choose `asniblePlaybook: invoke an Ansible Playbook` from `Sample Step`.
@@ -176,7 +177,7 @@ All you need to do is go to your machine terminal and run `cat <path-to-initial-
     - Click to `Generate Pipeline Script` and copy script (we will need at at main pipeline).
      <img src="https://user-images.githubusercontent.com/117680100/220712581-646684ee-ef25-4849-bbd1-e57312d495f3.png" width="75%" height="75%">
 
-### Creating Pipeline for building
+### Create Pipeline for building
 
 - **STEP 9** Now, go back to the pipeline where we created new pipeline item in **Step 6** , and type below script to there also ypu need to paste your git and Ansible pipeline scripts thath we generated before in **Step 7** and **Step 8** to there. Then click save.
 
@@ -199,11 +200,11 @@ All you need to do is go to your machine terminal and run `cat <path-to-initial-
 }
 ```
 
- <img src="https://user-images.githubusercontent.com/117680100/220714798-d530e1a4-9a74-49e4-a2cb-d15140e32604.png" width="75%" height="75%">
+ <img src="https://user-images.githubusercontent.com/117680100/220714798-d530e1a4-9a74-49e4-a2cb-d15140e32604.png" width="85%" height="85%">
 
 - **STEP 10** Now, go to the your pipeline and click `Build Now`, then it will start to build our pipeline. You check status of your pipeline building process as well as looking at logs on the right side. If everything is succesfully completed, then you can check your remote target server for your ansible playbook.
 
- <img src="https://user-images.githubusercontent.com/117680100/220718930-349df105-aa43-45c6-9f76-d9eb33d8f83c.png" width="75%" height="75%">
+ <img src="https://user-images.githubusercontent.com/117680100/220718930-349df105-aa43-45c6-9f76-d9eb33d8f83c.png" width="80%" height="80%">
 
  ### Congrats, You have built your first Jenkins projcet. KEEP GOING!!! 
- 
+
