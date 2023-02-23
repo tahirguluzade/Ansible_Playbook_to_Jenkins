@@ -29,7 +29,7 @@ jenkins   ALL=(ALL)      NOPASSWD:  ALL
 
 ### Installing ansible in our machine where we will also install Jenkins.
 
-- **STEP 2** Make sure that phyton is installed in your machine.
+- **STEP 2** Make sure that python is installed in your machine.
 ```
 python3 -m pip -V
 ```
@@ -49,7 +49,7 @@ python3 -m pip show ansible
 ```
 
 
-### Instaliing Jenkins in our machine where we also istalled Ansible before.
+### Installing Jenkins in our machine where we also istalled Ansible before.
 
 - **STEP 3** To install jenkins run below commands in your machine.
 
@@ -81,7 +81,7 @@ sudo firewall-cmd --zone=public --add-port=8080/tcp
 # do not forget to reload
 sudo firewall-cmd --reload
 ```
-- **NOTE :** If you have application which is already running on port number `8080` then you need to forward Jenkins to work another port number. 
+- **NOTE :** If you have an application which is already running on port number `8080` then you need to forward Jenkins to work on another port number. 
 
 ### Configuring Jenkins
 
@@ -164,6 +164,7 @@ All you need to do is go to your machine terminal and run `cat <path-to-initial-
     - For `Playbook file path in workspace` , write down name of your .yml file in the repository.
     - Type your inventory file path in repository to `Inventory file path in workspace.`
     <img src="https://user-images.githubusercontent.com/117680100/220705116-26d320d7-05dc-4f55-b47e-8d17837d63c3.png" width="75%" height="75%">
+
     - For `SSH connection credentials`: click to `+ Add` and `Jenkins` then enter details for SSH connection.
 
     <img src="https://user-images.githubusercontent.com/117680100/220709292-bc4b8754-60da-4f34-b9a8-aa784710ee86.png" width="75%" height="75%">
@@ -171,19 +172,19 @@ All you need to do is go to your machine terminal and run `cat <path-to-initial-
     - for the private key go to your Linux machine and copy private key and directly paste it to `Add` section
 
     <img src="https://user-images.githubusercontent.com/117680100/220709316-65135883-afdf-400a-b8e8-7b2fb832594d.png" width="75%" height="75%">
-    After adding your private key then for `SSH connection credentials`, choose your private key which you added.
 
+    - After adding your private key then for `SSH connection credentials`, choose your private key which you added.
     - For `Become username` and `Sudo username` use  an username which we created while installing Jenkins and Ansible.
     - Click to `Generate Pipeline Script` and copy script (we will need at at main pipeline).
      <img src="https://user-images.githubusercontent.com/117680100/220712581-646684ee-ef25-4849-bbd1-e57312d495f3.png" width="75%" height="75%">
 
 ### Create Pipeline for building
 
-- **STEP 9** Now, go back to the pipeline where we created new pipeline item in **Step 6** , and type below script to there also ypu need to paste your git and Ansible pipeline scripts thath we generated before in **Step 7** and **Step 8** to there. Then click save.
+- **STEP 9** Now, go back to the pipeline where we created new pipeline item in **Step 6** , and type below script to there also you need to paste your git and Ansible pipeline scripts which we generated before in **Step 7** and **Step 8** to there. Then click save.
 
 ```
   pipeline{
-    agnet any
+    agent any
     stages{
         stage{'SCM Checkout'){
             steps{
@@ -202,7 +203,7 @@ All you need to do is go to your machine terminal and run `cat <path-to-initial-
 
  <img src="https://user-images.githubusercontent.com/117680100/220714798-d530e1a4-9a74-49e4-a2cb-d15140e32604.png" width="85%" height="85%">
 
-- **STEP 10** Now, go to the your pipeline and click `Build Now`, then it will start to build our pipeline. You check status of your pipeline building process as well as looking at logs on the right side. If everything is succesfully completed, then you can check your remote target server for your ansible playbook.
+- **STEP 10** Now, go to the your pipeline and click `Build Now`, then it will start to build pipeline. You check status of your pipeline building process as well as looking at logs on the right side. If everything is succesfully completed, then you can check your remote target server for your ansible playbook.
 
  <img src="https://user-images.githubusercontent.com/117680100/220718930-349df105-aa43-45c6-9f76-d9eb33d8f83c.png" width="80%" height="80%">
 
